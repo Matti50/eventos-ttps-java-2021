@@ -1,6 +1,26 @@
 package eventos;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "valoracion")
 public class Valoracion {
+	
+	@Id
+	@Column(name = "valoracion_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long Id;
+	
+	private	Servicio servicio;
+	private	Integer puntuacionLimpieza;
+	private	Integer puntuacionSimpatia;
+	private	Integer puntuacionCalidadPrecio;
+	private	Integer puntuacionDiseño;
+	private	Integer puntuacionSabor;
+	
+	
+	public Valoracion() {}
+	
 	public Valoracion(Servicio servicio, Integer puntuacionLimpieza, Integer puntuacionSimpatia,
 			Integer puntuacionCalidadPrecio, Integer puntuacionDiseño, Integer puntuacionSabor) {
 		super();
@@ -11,12 +31,15 @@ public class Valoracion {
 		this.puntuacionDiseño = puntuacionDiseño;
 		this.puntuacionSabor = puntuacionSabor;
 	}
-	private	Servicio servicio;
-	private	Integer puntuacionLimpieza;
-	private	Integer puntuacionSimpatia;
-	private	Integer puntuacionCalidadPrecio;
-	private	Integer puntuacionDiseño;
-	private	Integer puntuacionSabor;
+	
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
 	public Servicio getServicio() {
 		return servicio;
 	}

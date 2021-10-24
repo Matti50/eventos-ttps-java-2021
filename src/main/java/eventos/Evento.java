@@ -2,8 +2,34 @@ package eventos;
 
 import java.sql.Time;
 import java.util.Date;
+import javax.persistence.*;
 
+
+@Entity
+@Table(name = "evento")
 public class Evento {
+	
+	
+	@Id
+	@Column(name = "evento_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long Id;
+	
+	private String nombre;
+	private String direccion;
+	private String codigo_postal;
+	private String provincia;
+	private String geo_x;
+	private String geo_y;
+	private TipoEvento tipo_vento;
+	private Date fecha;
+	private Time hora;
+	private String email;
+	private String telefono;
+	private EventoDetail[] servicios_evento;
+	private FormaDePago formaDePago;
+	
+	
 	
 	public Evento(String nombre, String direccion, String codigo_postal, String provincia, String geo_x, String geo_y,
 			TipoEvento tipo_vento, Date fecha, Time hora, String email, String telefono,
@@ -23,21 +49,18 @@ public class Evento {
 		this.servicios_evento = servicios_evento;
 		this.formaDePago = formaDePago;
 	}
-
-	private String nombre;
-	private String direccion;
-	private String codigo_postal;
-	private String provincia;
-	private String geo_x;
-	private String geo_y;
-	private TipoEvento tipo_vento;
-	private Date fecha;
-	private Time hora;
-	private String email;
-	private String telefono;
-	private EventoDetail[] servicios_evento;
-	private FormaDePago formaDePago;
 	
+	public Evento() {}
+	
+	
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}

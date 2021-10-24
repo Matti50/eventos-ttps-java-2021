@@ -1,8 +1,28 @@
 package eventos;
 
 import java.util.List;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "servicio")
 public class Servicio {
+	
+	
+	@Id
+	@Column(name = "servicio_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long Id;
+	
+	private String nombre;
+	private String descripcion;
+	private String url;
+	private String whatsapp;
+	private String instagram;
+	private String twitter;
+	private List imagenes;
+	private TipoServicio tipoServicio;
+	
+	
 	public Servicio(String nombre, String descripcion, String url, String whatsapp, String instagram, String twitter,
 			List imagenes, TipoServicio tipoServicio) {
 		super();
@@ -15,14 +35,20 @@ public class Servicio {
 		this.imagenes = imagenes;
 		this.tipoServicio = tipoServicio;
 	}
-	private String nombre;
-	private String descripcion;
-	private String url;
-	private String whatsapp;
-	private String instagram;
-	private String twitter;
-	private List imagenes;
-	private TipoServicio tipoServicio;
+	
+	public Servicio() {
+		
+	}
+	
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+
+	
 	public String getNombre() {
 		return nombre;
 	}

@@ -1,15 +1,38 @@
 package eventos;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "evento_detail")
 public class EventoDetail {
+	
+	@Id
+	@Column(name = "evento_detail_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long Id;
+	
+	private String estado;
+	private Servicio servicio;
+	private Valoracion[] valoraciones;
+	
 	public EventoDetail(String estado, Servicio servicio, Valoracion[] valoraciones) {
 		super();
 		this.estado = estado;
 		this.servicio = servicio;
 		this.valoraciones = valoraciones;
 	}
-	private String estado;
-	private Servicio servicio;
-	private Valoracion[] valoraciones;
+	
+	public Long getId() {
+		return Id;
+	}
+
+	public void setId(Long id) {
+		Id = id;
+	}
+	
+	public EventoDetail() {
+		
+	}
 	
 	public String getEstado() {
 		return estado;
