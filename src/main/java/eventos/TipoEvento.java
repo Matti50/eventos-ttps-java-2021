@@ -1,5 +1,7 @@
 package eventos;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,6 +18,11 @@ public class TipoEvento {
 	@Column(name = "tipo_evento_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
+	
+	
+	//navigationProperties
+	@OneToMany(mappedBy="tipo_evento")
+	private List<Evento> eventos;
 	
 	public Long getId() {
 		return Id;

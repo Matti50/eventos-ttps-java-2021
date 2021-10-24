@@ -11,13 +11,17 @@ public class Valoracion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	
-	private	Servicio servicio;
+	
 	private	Integer puntuacionLimpieza;
 	private	Integer puntuacionSimpatia;
 	private	Integer puntuacionCalidadPrecio;
 	private	Integer puntuacionDiseño;
 	private	Integer puntuacionSabor;
 	
+	
+	//navigation properties
+	@OneToOne
+	private	Servicio servicio;
 	
 	public Valoracion() {}
 	

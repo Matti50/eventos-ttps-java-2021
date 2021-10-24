@@ -7,12 +7,10 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
 	<persistence-unit name="eventos">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>eventos.Usuario</class>
-		<class>eventos.Servicio</class>
-		<class>eventos.Usuario</class>
 		
 		<properties>
 			<property name="hibernate.connection.driver_class"
-				value="com.mysql.jdbc.Driver" />
+				value="com.mysql.cj.jdbc.Driver" />
 			<property name="hibernate.connection.password" value="1234" />
 			<property name="hibernate.connection.url"
 				value="jdbc:mysql://localhost:3306/eventosdb" />

@@ -1,9 +1,12 @@
 package eventos;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +24,10 @@ public class TipoServicio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	
+	
+	//navigation properties
+	@OneToMany(mappedBy="tipoServicio")
+	private List<Servicio> servicios;
 
 	private String descripcion;
 

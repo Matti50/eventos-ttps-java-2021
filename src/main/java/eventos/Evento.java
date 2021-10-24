@@ -2,6 +2,8 @@ package eventos;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -21,19 +23,36 @@ public class Evento {
 	private String provincia;
 	private String geo_x;
 	private String geo_y;
-	private TipoEvento tipo_vento;
+
 	private Date fecha;
 	private Time hora;
 	private String email;
 	private String telefono;
-	private EventoDetail[] servicios_evento;
+	
+	
+	
+	
+	//navigation properties
+	@ManyToOne
+	@JoinColumn(name="usuario_id")
+	private Usuario usuario;
+	
+	@ManyToOne
+	@JoinColumn(name="forma_pago_id")
 	private FormaDePago formaDePago;
+	
+	@ManyToOne
+	@JoinColumn(name="tipo_evento_id")
+	private TipoEvento tipo_evento;
+	
+	@OneToMany(mappedBy="evento")
+	private List<EventoDetail> servicios_evento;
 	
 	
 	
 	public Evento(String nombre, String direccion, String codigo_postal, String provincia, String geo_x, String geo_y,
-			TipoEvento tipo_vento, Date fecha, Time hora, String email, String telefono,
-			EventoDetail[] servicios_evento, FormaDePago formaDePago) {
+			TipoEvento tipo_evento, Date fecha, Time hora, String email, String telefono,
+			List<EventoDetail> servicios_evento, FormaDePago formaDePago) {
 		super();
 		this.nombre = nombre;
 		this.direccion = direccion;
@@ -41,7 +60,7 @@ public class Evento {
 		this.provincia = provincia;
 		this.geo_x = geo_x;
 		this.geo_y = geo_y;
-		this.tipo_vento = tipo_vento;
+		this.tipo_evento = tipo_evento;
 		this.fecha = fecha;
 		this.hora = hora;
 		this.email = email;
@@ -52,6 +71,14 @@ public class Evento {
 	
 	public Evento() {}
 	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 	
 	public Long getId() {
 		return Id;
@@ -98,10 +125,10 @@ public class Evento {
 		this.geo_y = geo_y;
 	}
 	public TipoEvento getTipo_vento() {
-		return tipo_vento;
+		return tipo_evento;
 	}
 	public void setTipo_vento(TipoEvento tipo_vento) {
-		this.tipo_vento = tipo_vento;
+		this.tipo_evento = tipo_vento;
 	}
 	public Date getFecha() {
 		return fecha;
@@ -127,10 +154,10 @@ public class Evento {
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
-	public EventoDetail[] getServicios_evento() {
+	public List<EventoDetail> getServicios_evento() {
 		return servicios_evento;
 	}
-	public void setServicios_evento(EventoDetail[] servicios_evento) {
+	public void setServicios_evento(List<EventoDetail> servicios_evento) {
 		this.servicios_evento = servicios_evento;
 	}
 	public FormaDePago getFormaDePago() {

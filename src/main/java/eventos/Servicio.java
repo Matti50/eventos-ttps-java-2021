@@ -7,7 +7,6 @@ import javax.persistence.*;
 @Table(name = "servicio")
 public class Servicio {
 	
-	
 	@Id
 	@Column(name = "servicio_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,12 +18,27 @@ public class Servicio {
 	private String whatsapp;
 	private String instagram;
 	private String twitter;
-	private List imagenes;
+	//private List<String> imagenes;
+	
+	
+	//navigation properties
+	
+	@ManyToMany(mappedBy="servicios")
+	private List<Usuario> usuarios;
+	
+	
+	@OneToMany(mappedBy="servicio")
+	private List<EventoDetail> evento_details;
+	
+	@ManyToOne
+	@JoinColumn(name="tipo_servicio_id")
 	private TipoServicio tipoServicio;
 	
+	@OneToOne(mappedBy="servicio")
+	private Valoracion valoracion;
 	
 	public Servicio(String nombre, String descripcion, String url, String whatsapp, String instagram, String twitter,
-			List imagenes, TipoServicio tipoServicio) {
+			List<String> imagenes, TipoServicio tipoServicio) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -32,7 +46,7 @@ public class Servicio {
 		this.whatsapp = whatsapp;
 		this.instagram = instagram;
 		this.twitter = twitter;
-		this.imagenes = imagenes;
+		//this.imagenes = imagenes;
 		this.tipoServicio = tipoServicio;
 	}
 	
@@ -85,16 +99,23 @@ public class Servicio {
 	public void setTwitter(String twitter) {
 		this.twitter = twitter;
 	}
-	public List getImagenes() {
+	/*public List<String> getImagenes() {
 		return imagenes;
 	}
-	public void setImagenes(List imagenes) {
+	public void setImagenes(List<String> imagenes) {
 		this.imagenes = imagenes;
-	}
+	}*/
 	public TipoServicio getTipoServicio() {
 		return tipoServicio;
 	}
 	public void setTipoServicio(TipoServicio tipoServicio) {
 		this.tipoServicio = tipoServicio;
+	}
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
 	}
 }

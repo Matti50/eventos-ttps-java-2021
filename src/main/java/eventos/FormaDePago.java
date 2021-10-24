@@ -1,5 +1,7 @@
 package eventos;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -20,6 +22,11 @@ public class FormaDePago {
 	private Long Id;
 	
 	private String descripcion;
+	
+	
+	//navigation properties
+	@OneToMany(mappedBy="formaDePago")
+	private List<Evento> eventos;
 
 	public String getDescripcion() {
 		return descripcion;
@@ -28,5 +35,9 @@ public class FormaDePago {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	
+	
+	
 
 }

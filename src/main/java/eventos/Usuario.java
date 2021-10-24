@@ -1,5 +1,7 @@
 package eventos;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,8 +18,17 @@ public class Usuario {
 	private String apellido;
 	private String email;
 	private String password;
-	private Evento[] eventos;
-	private Servicio[] servicios;
+	
+	@OneToMany(mappedBy="usuario")
+	private List<Evento> eventos;
+	
+	@ManyToMany
+	@JoinTable(name="usuario_servicio",
+	joinColumns=@JoinColumn(name="usuario_id",
+	referencedColumnName="usuario_id"),
+	inverseJoinColumns=@JoinColumn(name="servicio_id",
+	referencedColumnName="servicio_id"))		
+	private List<Servicio> servicios;
 
 	public long getId() {
 		return usuario_id;
@@ -27,8 +38,8 @@ public class Usuario {
 		
 	}
 
-	public Usuario(String nombre, String apellido, String email, String password, Evento[] eventos,
-			Servicio[] servicios) {
+	public Usuario(String nombre, String apellido, String email, String password, List<Evento> eventos,
+			List<Servicio> servicios) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -72,19 +83,19 @@ public class Usuario {
 		this.password = password;
 	}
 
-	public Evento[] getEventos() {
+	public List<Evento> getEventos() {
 		return eventos;
 	}
 
-	public void setEventos(Evento[] eventos) {
+	public void setEventos(List<Evento> eventos) {
 		this.eventos = eventos;
 	}
 
-	public Servicio[] getServicios() {
+	public List <Servicio> getServicios() {
 		return servicios;
 	}
 
-	public void setServicios(Servicio[] servicios) {
+	public void setServicios(List<Servicio> servicios) {
 		this.servicios = servicios;
 	}
 
