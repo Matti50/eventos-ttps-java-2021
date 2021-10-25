@@ -43,7 +43,8 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T>  {
 		try {
 		tx = em.getTransaction();
 		tx.begin();
-		em.remove(entity);
+		//em.remove(entity);
+		em.remove(em.contains(entity) ? entity : em.merge(entity));
 		tx.commit();
 		}
 		catch (RuntimeException e) {
@@ -58,7 +59,7 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T>  {
 	@Override
 	public T borrar(Serializable id) {
 		EntityManager em = EMF.getEMF();
-		T entity=  em.find(this.getPersistentClass(), id);
+		T entity=  em.find(this.getPersistentClass(), id) ;
 				
 		if (entity != null) {
 			this.borrar(entity);
