@@ -18,7 +18,6 @@ public class Servicio {
 	private String whatsapp;
 	private String instagram;
 	private String twitter;
-	//private List<String> imagenes;
 	
 	
 	//navigation properties
@@ -34,11 +33,12 @@ public class Servicio {
 	@JoinColumn(name="tipo_servicio_id")
 	private TipoServicio tipoServicio;
 	
-	@OneToOne(mappedBy="servicio")
-	private Valoracion valoracion;
+	@ElementCollection
+	@CollectionTable(name="imagenes", joinColumns=@JoinColumn(name="servicio_id"))
+	@Column(name="imagen_path")
+	private List<String> imagenes;
 	
-	public Servicio(String nombre, String descripcion, String url, String whatsapp, String instagram, String twitter,
-			List<String> imagenes, TipoServicio tipoServicio) {
+	public Servicio(String nombre, String descripcion, String url, String whatsapp, String instagram, String twitter, TipoServicio tipoServicio) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -46,7 +46,6 @@ public class Servicio {
 		this.whatsapp = whatsapp;
 		this.instagram = instagram;
 		this.twitter = twitter;
-		//this.imagenes = imagenes;
 		this.tipoServicio = tipoServicio;
 	}
 	
@@ -99,12 +98,6 @@ public class Servicio {
 	public void setTwitter(String twitter) {
 		this.twitter = twitter;
 	}
-	/*public List<String> getImagenes() {
-		return imagenes;
-	}
-	public void setImagenes(List<String> imagenes) {
-		this.imagenes = imagenes;
-	}*/
 	public TipoServicio getTipoServicio() {
 		return tipoServicio;
 	}

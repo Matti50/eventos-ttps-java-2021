@@ -11,7 +11,7 @@ public class EventoDetail {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	private String estado;
-	private Valoracion[] valoraciones;
+	
 	
 	//navigation properties
 	@ManyToOne
@@ -22,11 +22,14 @@ public class EventoDetail {
 	@JoinColumn(name="servicio_id")
 	private Servicio servicio;
 	
-	public EventoDetail(String estado, Servicio servicio, Valoracion[] valoraciones) {
+	@OneToOne
+	private Valoracion valoracion;
+	
+	public EventoDetail(String estado, Servicio servicio, Valoracion valoracion) {
 		super();
 		this.estado = estado;
 		this.servicio = servicio;
-		this.valoraciones = valoraciones;
+		this.valoracion = valoracion;
 	}
 	
 	public Long getId() {
@@ -53,10 +56,10 @@ public class EventoDetail {
 	public void setServicio(Servicio servicio) {
 		this.servicio = servicio;
 	}
-	public Valoracion[] getValoraciones() {
-		return valoraciones;
+	public Valoracion getValoracion() {
+		return valoracion;
 	}
-	public void setValoraciones(Valoracion[] valoraciones) {
-		this.valoraciones = valoraciones;
+	public void setValoracion(Valoracion valoracion) {
+		this.valoracion = valoracion;
 	}
 }
