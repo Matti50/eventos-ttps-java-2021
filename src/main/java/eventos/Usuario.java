@@ -98,5 +98,7 @@ public class Usuario {
 	public void setServicios(List<Servicio> servicios) {
 		this.servicios = servicios;
 	}
-
+	
+	
+	
 }

@@ -20,15 +20,16 @@ public class Valoracion {
 	
 	
 	//navigation properties
-	@OneToOne
-	private	Servicio servicio;
+	
+	@OneToOne(optional = true, mappedBy="valoracion")
+	private EventoDetail eventoDetail;
+	
 	
 	public Valoracion() {}
 	
 	public Valoracion(Servicio servicio, Integer puntuacionLimpieza, Integer puntuacionSimpatia,
 			Integer puntuacionCalidadPrecio, Integer puntuacionDiseño, Integer puntuacionSabor) {
 		super();
-		this.servicio = servicio;
 		this.puntuacionLimpieza = puntuacionLimpieza;
 		this.puntuacionSimpatia = puntuacionSimpatia;
 		this.puntuacionCalidadPrecio = puntuacionCalidadPrecio;
@@ -44,12 +45,6 @@ public class Valoracion {
 		Id = id;
 	}
 
-	public Servicio getServicio() {
-		return servicio;
-	}
-	public void setServicio(Servicio servicio) {
-		this.servicio = servicio;
-	}
 	public Integer getPuntuacionLimpieza() {
 		return puntuacionLimpieza;
 	}
