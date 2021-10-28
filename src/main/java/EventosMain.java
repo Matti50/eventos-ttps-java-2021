@@ -4,9 +4,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
+import java.time.LocalDateTime;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
 
 import eventos.Evento;
 import eventos.EventoDetail;
@@ -17,6 +18,7 @@ import eventos.TipoServicio;
 import genericDao.DaoFactory;
 import genericDao.EMF;
 import genericDao.EventoDAO;
+import genericDao.FormaDePagoDAO;
 import genericDao.ServicioDAO;
 import genericDao.TipoServicioDAO;
 import genericDao.UsuarioDAO;
@@ -40,10 +42,30 @@ public class EventosMain {
 	//user1Dao.borrar(id);
 	
 	
+	// Genera formas de pago 
+	
+	FormaDePago formaDePago1 = new FormaDePago("Pagan los asistentes");
+	FormaDePago formaDePago2 = new FormaDePago("Paga el organizador");
+	FormaDePagoDAO fdp = DaoFactory.getFormaDePagoDAO();
+	fdp.persistir(formaDePago1);
+	fdp.persistir(formaDePago2);
+	
+	// Genera tipos de servicio en la base
+	TipoServicio tipoServicio1= new TipoServicio("Catering");
+	TipoServicio tipoServicio2= new TipoServicio("FoodTruck");
+	
+	TipoServicioDAO tsd = DaoFactory.getTipoServicioDAO();
+	tsd.persistir(tipoServicio1);
+	tsd.persistir(tipoServicio2);
+	
+	
+	
+	
+	
 	Usuario user3 = new Usuario("Matias2", "Aguirre", "masmam@gmail.com", "123455", null, null);
 	userOnly.persistir(user3);
 	List<Evento> eventos = new ArrayList<>();
-	Evento evento =(new Evento("evento de rutas",null,null,null,null,null,null,null,null,null,user3,null,null, null));
+	Evento evento =(new Evento("evento de rutas","7 y 50","1900","Buenos Aires","00.50","60.40",LocalDateTime.now(),null,null,null,user3,formaDePago1,null, null));
 	//(Long id, String nombre, String direccion, String codigo_postal, String provincia, String geo_x,
 	EventoDAO event = DaoFactory.getEventoDAO();
 	event.persistir(evento);
@@ -66,14 +88,13 @@ public class EventosMain {
 		
 	};
 	
-	// Genera tipos de servicio en la base
-	TipoServicio tipoServicio1= new TipoServicio("Catering");
-	TipoServicio tipoServicio2= new TipoServicio("FoodTruck");
 	
-	TipoServicioDAO tsd = DaoFactory.getTipoServicioDAO();
-	tsd.persistir(tipoServicio1);
-	tsd.persistir(tipoServicio2);
 	
+	
+	
+	
+	
+
 	
 	Servicio servicio1 = new Servicio ("Catering","catering full",null,null,null,null,tipoServicio1,user3);
 	Servicio servicio2 = new Servicio ("Esto es un servicio de foodTruck","catering medio",null,null,null,null,tipoServicio2,user3);

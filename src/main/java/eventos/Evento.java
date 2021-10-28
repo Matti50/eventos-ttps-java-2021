@@ -1,6 +1,7 @@
 package eventos;
 
 import java.sql.Time;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class Evento {
 	
 	
 	public Evento( String nombre, String direccion, String codigo_postal, String provincia, String geo_x,
-			String geo_y, Date fecha, Time hora, String email, String telefono, Usuario usuario,
+			String geo_y, LocalDateTime fecha, Time hora, String email, String telefono, Usuario usuario,
 			FormaDePago formaDePago, TipoEvento tipo_evento, List<EventoDetail> servicios_evento) {
 		super();
 		this.nombre = nombre;
@@ -43,7 +44,7 @@ public class Evento {
 	private String geo_x;
 	private String geo_y;
 
-	private Date fecha;
+	private LocalDateTime fecha;
 	private Time hora;
 	private String email;
 	private String telefono;
@@ -132,10 +133,10 @@ public class Evento {
 	public void setTipo_vento(TipoEvento tipo_vento) {
 		this.tipo_evento = tipo_vento;
 	}
-	public Date getFecha() {
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
 	}
 	public Time getHora() {
