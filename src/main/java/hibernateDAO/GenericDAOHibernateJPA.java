@@ -138,12 +138,5 @@ public class GenericDAOHibernateJPA<T> implements GenericDAO<T> {
 		return resultado;
 	}
 
-	@Override
-	public T encontrarPorId(int id) {
-		EntityManager em = EMF.getEMF();
-		T entity = em.find(this.getPersistentClass(), id);
-
-		return entity;
-	}
 
 }

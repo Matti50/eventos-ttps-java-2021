@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
@@ -22,10 +23,17 @@ public class EventosMain {
 	UsuarioDAO user2Dao= daoFactory.getUsuarioDAO();
 	UsuarioDAO userOnly = daoFactory.getUsuarioDAO();
 	long id =  2;
-	user1Dao.persistir(user1);
-	user2Dao.persistir(user2);
+	//user1Dao.persistir(user1);
+	//user2Dao.persistir(user2);
 	//user1Dao.borrar(id);
-
+	
+	
+	
+	List<Evento> eventos = new ArrayList<>();
+	eventos.add(new Evento("evento de rutas",null,null,null,null,null,null,null,null,null,null,null,null));
+	Usuario user3 = new Usuario("Matias2", "Aguirre", "masmam@gmail.com", "123455", eventos, null);
+	userOnly.persistir(user3);
+	
 	long id2 = 7;
 	long id3 = 34;
 	//System.out.println(userOnly.recuperar(id2).toString());
@@ -36,7 +44,6 @@ public class EventosMain {
 	
 	//userOnly.borrarTodos();
 	
-	
 	//List<Usuario> usuarios = userOnly.listar();
 	for(int i = 0; i<usuariosOrdenados.size(); i++) {
 		Usuario usuario = usuariosOrdenados.get(i);
@@ -44,8 +51,7 @@ public class EventosMain {
 		System.out.println(usuario.toString());
 		
 	}
-	
-		
+			
 
 	}
 }

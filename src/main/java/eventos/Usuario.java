@@ -19,7 +19,7 @@ public class Usuario {
 	private String email;
 	private String password;
 	
-	@OneToMany(mappedBy="usuario")
+	@OneToMany(mappedBy="usuario",cascade={CascadeType.PERSIST,CascadeType.REMOVE})
 	private List<Evento> eventos;
 	
 	@ManyToMany
