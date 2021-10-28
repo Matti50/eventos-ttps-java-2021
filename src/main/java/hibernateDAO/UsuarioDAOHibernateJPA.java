@@ -1,5 +1,6 @@
 package hibernateDAO;
 
+import java.io.Serializable;
 import java.util.List;
 
 import eventos.Evento;
@@ -11,22 +12,7 @@ public class UsuarioDAOHibernateJPA extends GenericDAOHibernateJPA<Usuario> impl
 	public UsuarioDAOHibernateJPA() {
 		super(Usuario.class);
 	}
-	
-
-
-	@Override
-	public List<Servicio> getServicios() {
-		return null;
-	}
-	
-
-	@Override
-	public List<Evento> getEventos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
+		
 	
 	
 	

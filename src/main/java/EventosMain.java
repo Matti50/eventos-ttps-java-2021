@@ -18,6 +18,7 @@ import genericDao.EventoDAO;
 import genericDao.ServicioDAO;
 import genericDao.TipoServicioDAO;
 import genericDao.UsuarioDAO;
+import hibernateDAO.ServicioDAOHibernateJPA;
 import eventos.Usuario;
 public class EventosMain {
 
@@ -46,6 +47,7 @@ public class EventosMain {
 	event.persistir(evento);
 	long id2 = 7;
 	long id3 = 34;
+	long id4 = 2;
 	//System.out.println(userOnly.recuperar(id2).toString());
 	System.out.println(userOnly.existe(id2));
 	System.out.println(userOnly.existe(id3));
@@ -66,9 +68,19 @@ public class EventosMain {
 	TipoServicio tipoServicio1= new TipoServicio("Catering");
 	TipoServicio tipoServicio2= new TipoServicio("FoodTruck");
 	
+	TipoServicioDAO tsd = DaoFactory.getTipoServicioDAO();
+	tsd.persistir(tipoServicio1);
+	tsd.persistir(tipoServicio2);
+	
+	
 	Servicio servicio1 = new Servicio ("Catering","catering full",null,null,null,null,tipoServicio1,user3);
 	Servicio servicio2 = new Servicio ("Esto es un servicio de foodTruck","catering medio",null,null,null,null,tipoServicio2,user3);
 	
+	ServicioDAO serviceDao = DaoFactory.getServicioDAO();
+	
+	List<Servicio> serviciosChetos = serviceDao.getServiciosForUser(id4);
+	System.out.println(serviciosChetos);
+	System.out.println(event.getEventosForUser(4).toString());
 	ServicioDAO servicio = DaoFactory.getServicioDAO();
 	servicio.persistir(servicio1);
 	servicio.persistir(servicio2);
