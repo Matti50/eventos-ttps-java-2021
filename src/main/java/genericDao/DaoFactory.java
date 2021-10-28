@@ -2,6 +2,7 @@ package genericDao;
 
 import hibernateDAO.EventoDAOHibernateJPA;
 import hibernateDAO.ServicioDAOHibernateJPA;
+import hibernateDAO.TipoServicioDAOHibernateJPA;
 import hibernateDAO.UsuarioDAOHibernateJPA;
 
 public class DaoFactory {
@@ -18,5 +19,10 @@ public class DaoFactory {
 	public static ServicioDAO getServicioDAO() {
 		// TODO Auto-generated method stub
 		return new ServicioDAOHibernateJPA();
+	}
+	
+	public static TipoServicioDAO getTipoServicioDAO() {
+		// TODO Auto-generated method stub
+		return new TipoServicioDAOHibernateJPA();
 	}
 }

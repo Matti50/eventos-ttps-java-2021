@@ -11,10 +11,12 @@ import eventos.EventoDetail;
 import eventos.FormaDePago;
 import eventos.Servicio;
 import eventos.TipoEvento;
+import eventos.TipoServicio;
 import genericDao.DaoFactory;
 import genericDao.EMF;
 import genericDao.EventoDAO;
 import genericDao.ServicioDAO;
+import genericDao.TipoServicioDAO;
 import genericDao.UsuarioDAO;
 import eventos.Usuario;
 public class EventosMain {
@@ -60,8 +62,12 @@ public class EventosMain {
 		
 	};
 	
-	Servicio servicio1 = new Servicio ("Catering","catering full",null,null,null,null,null,user3);
-	Servicio servicio2 = new Servicio ("Catering2","catering medio",null,null,null,null,null,user3);
+	// Genera tipos de servicio en la base
+	TipoServicio tipoServicio1= new TipoServicio("Catering");
+	TipoServicio tipoServicio2= new TipoServicio("FoodTruck");
+	
+	Servicio servicio1 = new Servicio ("Catering","catering full",null,null,null,null,tipoServicio1,user3);
+	Servicio servicio2 = new Servicio ("Esto es un servicio de foodTruck","catering medio",null,null,null,null,tipoServicio2,user3);
 	
 	ServicioDAO servicio = DaoFactory.getServicioDAO();
 	servicio.persistir(servicio1);
