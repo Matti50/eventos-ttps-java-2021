@@ -1,13 +1,19 @@
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import eventos.Evento;
+import eventos.EventoDetail;
+import eventos.FormaDePago;
 import eventos.Servicio;
+import eventos.TipoEvento;
 import genericDao.DaoFactory;
 import genericDao.EMF;
+import genericDao.EventoDAO;
 import genericDao.UsuarioDAO;
 import eventos.Usuario;
 public class EventosMain {
@@ -28,12 +34,13 @@ public class EventosMain {
 	//user1Dao.borrar(id);
 	
 	
-	
-	List<Evento> eventos = new ArrayList<>();
-	eventos.add(new Evento("evento de rutas",null,null,null,null,null,null,null,null,null,null,null,null));
-	Usuario user3 = new Usuario("Matias2", "Aguirre", "masmam@gmail.com", "123455", eventos, null);
+	Usuario user3 = new Usuario("Matias2", "Aguirre", "masmam@gmail.com", "123455", null, null);
 	userOnly.persistir(user3);
-	
+	List<Evento> eventos = new ArrayList<>();
+	Evento evento =(new Evento("evento de rutas",null,null,null,null,null,null,null,null,null,user3,null,null, null));
+	//(Long id, String nombre, String direccion, String codigo_postal, String provincia, String geo_x,
+	EventoDAO event = daoFactory.getEventoDAO();
+	event.persistir(evento);
 	long id2 = 7;
 	long id3 = 34;
 	//System.out.println(userOnly.recuperar(id2).toString());

@@ -12,6 +12,25 @@ import javax.persistence.*;
 public class Evento {
 	
 	
+	public Evento( String nombre, String direccion, String codigo_postal, String provincia, String geo_x,
+			String geo_y, Date fecha, Time hora, String email, String telefono, Usuario usuario,
+			FormaDePago formaDePago, TipoEvento tipo_evento, List<EventoDetail> servicios_evento) {
+		super();
+		this.nombre = nombre;
+		this.direccion = direccion;
+		this.codigo_postal = codigo_postal;
+		this.provincia = provincia;
+		this.geo_x = geo_x;
+		this.geo_y = geo_y;
+		this.fecha = fecha;
+		this.hora = hora;
+		this.email = email;
+		this.telefono = telefono;
+		this.usuario = usuario;
+		this.formaDePago = formaDePago;
+		this.tipo_evento = tipo_evento;
+		this.servicios_evento = servicios_evento;
+	}
 	@Id
 	@Column(name = "evento_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +53,7 @@ public class Evento {
 	
 	//navigation properties
 	@ManyToOne
-	@JoinColumn(name="usuario_id")
+	@JoinColumn(name="usuario_id", nullable=false)
 	private Usuario usuario;
 	
 	@ManyToOne
@@ -50,24 +69,7 @@ public class Evento {
 	
 	
 	
-	public Evento(String nombre, String direccion, String codigo_postal, String provincia, String geo_x, String geo_y,
-			TipoEvento tipo_evento, Date fecha, Time hora, String email, String telefono,
-			List<EventoDetail> servicios_evento, FormaDePago formaDePago) {
-		super();
-		this.nombre = nombre;
-		this.direccion = direccion;
-		this.codigo_postal = codigo_postal;
-		this.provincia = provincia;
-		this.geo_x = geo_x;
-		this.geo_y = geo_y;
-		this.tipo_evento = tipo_evento;
-		this.fecha = fecha;
-		this.hora = hora;
-		this.email = email;
-		this.telefono = telefono;
-		this.servicios_evento = servicios_evento;
-		this.formaDePago = formaDePago;
-	}
+
 	
 	public Evento() {}
 	
