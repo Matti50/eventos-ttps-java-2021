@@ -19,4 +19,7 @@ public class UsuarioDAOHibernateJPA extends GenericDAOHibernateJPA<Usuario> impl
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
+	
 }

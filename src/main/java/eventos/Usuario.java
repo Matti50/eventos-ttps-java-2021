@@ -99,6 +99,15 @@ public class Usuario {
 		this.servicios = servicios;
 	}
 	
+	@Override
+	public String toString() {
+		return "nombre: "+nombre+", apellido: " + apellido +", email: "+ email;
+	}
 	
+	
+	public Evento agregarEvento(Evento evento) {
+		this.eventos.add(evento);
+		return evento;
+	}
 	
 }

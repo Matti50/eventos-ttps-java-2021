@@ -21,8 +21,6 @@ public interface GenericDAO<T> {
 
 	public List<T> listar();
 
-	public List<T> recuperarTodos(String columnOrder);
-
 	public List<T> recuperarTodosOrdenados(String columnOrder);
 
 	public T encontrarPorId(int id);
