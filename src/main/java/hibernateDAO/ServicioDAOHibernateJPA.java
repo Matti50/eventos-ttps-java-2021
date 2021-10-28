@@ -15,11 +15,19 @@ public class ServicioDAOHibernateJPA extends GenericDAOHibernateJPA<Servicio> im
 	}
 
 	
-	public List<Servicio> getServiciosForUser(Serializable id){
+	public List<Servicio> getServiciosForUser(Serializable usuario_id){
 		EntityManager em = EMF.getEMF();
-		return (List<Servicio>)em.createQuery("select s from " + getPersistentClass().getSimpleName() +" s where usuario_id="+id ).getResultList();
+		return (List<Servicio>)em.createQuery("select s from " + getPersistentClass().getSimpleName() +" s where usuario_id="+usuario_id ).getResultList();
 	}
 	
+	public String addImageToService(Servicio servicio, String imagen) {
+		
+		
+		servicio.agregarImagen(imagen);
+		this.actualizar(servicio);
+		return imagen;
+		
+	}
 	
 	
 }

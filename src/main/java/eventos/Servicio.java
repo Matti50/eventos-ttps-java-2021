@@ -1,6 +1,8 @@
 package eventos;
 
 import java.util.List;
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -36,9 +38,18 @@ public class Servicio {
 	
 	@ElementCollection
 	@CollectionTable(name="imagenes", joinColumns=@JoinColumn(name="servicio_id"))
-	@Column(name="imagen_path")
-	private List<String> imagenes;
+	@Column(name="imagen_path", nullable=false)
 	
+	private Set<String> imagenes;
+	
+	public Set<String> getImagenes() {
+		return imagenes;
+	}
+
+	public void setImagenes(Set<String> imagenes) {
+		this.imagenes = imagenes;
+	}
+
 	public Servicio(String nombre, String descripcion, String url, String whatsapp, String instagram, String twitter, TipoServicio tipoServicio, Usuario usuario) {
 		super();
 		this.nombre = nombre;
@@ -107,5 +118,11 @@ public class Servicio {
 		this.tipoServicio = tipoServicio;
 	}
 
-
+	public String agregarImagen(String imagen) {
+		this.imagenes.add(imagen);
+		return imagen;
+	}
+	
+	
+	
 }

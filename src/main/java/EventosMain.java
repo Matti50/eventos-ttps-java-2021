@@ -1,7 +1,9 @@
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -76,6 +78,11 @@ public class EventosMain {
 	Servicio servicio1 = new Servicio ("Catering","catering full",null,null,null,null,tipoServicio1,user3);
 	Servicio servicio2 = new Servicio ("Esto es un servicio de foodTruck","catering medio",null,null,null,null,tipoServicio2,user3);
 	
+	//agregamos las imagenes seteando el array.
+	HashSet<String> imagenes = new HashSet<String>();
+	imagenes.add("/img1.png");
+	servicio1.setImagenes(imagenes);
+	
 	ServicioDAO serviceDao = DaoFactory.getServicioDAO();
 	
 	List<Servicio> serviciosChetos = serviceDao.getServiciosForUser(id4);
@@ -84,6 +91,8 @@ public class EventosMain {
 	ServicioDAO servicio = DaoFactory.getServicioDAO();
 	servicio.persistir(servicio1);
 	servicio.persistir(servicio2);
+	
+	servicio.addImageToService(servicio1, "/img2.jpg");
 	
 			
 
