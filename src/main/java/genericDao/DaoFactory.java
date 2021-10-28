@@ -15,7 +15,7 @@ public class DaoFactory {
 		return new EventoDAOHibernateJPA();
 	}
 	
-	public static ServicioDAO getSerivicioDAO() {
+	public static ServicioDAO getServicioDAO() {
 		// TODO Auto-generated method stub
 		return new ServicioDAOHibernateJPA();
 	}

@@ -22,8 +22,9 @@ public class Servicio {
 	
 	//navigation properties
 	
-	@ManyToMany(mappedBy="servicios")
-	private List<Usuario> usuarios;
+	@ManyToOne
+	@JoinColumn(name="usuario_id", nullable=false)
+	private Usuario usuario;
 	
 	
 	@OneToMany(mappedBy="servicio")
@@ -38,7 +39,7 @@ public class Servicio {
 	@Column(name="imagen_path")
 	private List<String> imagenes;
 	
-	public Servicio(String nombre, String descripcion, String url, String whatsapp, String instagram, String twitter, TipoServicio tipoServicio) {
+	public Servicio(String nombre, String descripcion, String url, String whatsapp, String instagram, String twitter, TipoServicio tipoServicio, Usuario usuario) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -47,6 +48,7 @@ public class Servicio {
 		this.instagram = instagram;
 		this.twitter = twitter;
 		this.tipoServicio = tipoServicio;
+		this.usuario = usuario;
 	}
 	
 	public Servicio() {
@@ -104,11 +106,6 @@ public class Servicio {
 	public void setTipoServicio(TipoServicio tipoServicio) {
 		this.tipoServicio = tipoServicio;
 	}
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
 
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
-	}
+
 }

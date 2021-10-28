@@ -22,14 +22,9 @@ public class Usuario {
 	@OneToMany(mappedBy="usuario",cascade={CascadeType.REMOVE})
 	private List<Evento> eventos;
 	
-	@ManyToMany
-	@JoinTable(name="usuario_servicio",
-	joinColumns=@JoinColumn(name="usuario_id",
-	referencedColumnName="usuario_id"),
-	inverseJoinColumns=@JoinColumn(name="servicio_id",
-	referencedColumnName="servicio_id"))		
+	@OneToMany(mappedBy="usuario",cascade={CascadeType.REMOVE})
 	private List<Servicio> servicios;
-
+			
 	public long getId() {
 		return usuario_id;
 	}

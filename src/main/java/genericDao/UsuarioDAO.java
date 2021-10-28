@@ -1,10 +1,15 @@
 package genericDao;
 
+import java.util.List;
+
+import eventos.Evento;
+import eventos.Servicio;
 import eventos.Usuario;
+
 
 public interface UsuarioDAO extends GenericDAO<Usuario> {
 
-	public boolean existeUsuario(String numeroAlu);
+	public List<Servicio> getServicios();
 
-	public Usuario recuperarUsuario(String usuario);
+	public List<Evento> getEventos();
 }

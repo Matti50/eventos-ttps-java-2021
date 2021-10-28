@@ -1,5 +1,9 @@
 package hibernateDAO;
 
+import java.util.List;
+
+import eventos.Evento;
+import eventos.Servicio;
 import eventos.Usuario;
 import genericDao.UsuarioDAO;
 
@@ -7,18 +11,23 @@ public class UsuarioDAOHibernateJPA extends GenericDAOHibernateJPA<Usuario> impl
 	public UsuarioDAOHibernateJPA() {
 		super(Usuario.class);
 	}
+	
+
 
 	@Override
-	public boolean existeUsuario(String numeroAlu) {
-		// TODO Auto-generated method stub
-		return false;
+	public List<Servicio> getServicios() {
+		return null;
 	}
+	
 
 	@Override
-	public Usuario recuperarUsuario(String usuario) {
+	public List<Evento> getEventos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	
+	
 	
 	
 }

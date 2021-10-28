@@ -14,6 +14,7 @@ import eventos.TipoEvento;
 import genericDao.DaoFactory;
 import genericDao.EMF;
 import genericDao.EventoDAO;
+import genericDao.ServicioDAO;
 import genericDao.UsuarioDAO;
 import eventos.Usuario;
 public class EventosMain {
@@ -25,9 +26,9 @@ public class EventosMain {
 	DaoFactory daoFactory = new DaoFactory();
 	Usuario user1 = new Usuario( "Nicolas", "Prieto", "malak32@gmail.com", "123456", null,null);
 	Usuario user2 = new Usuario( "Matias", "Cicchitti", "matiascicchittimg@gmail.com", "123456", null,null);
-	UsuarioDAO user1Dao= daoFactory.getUsuarioDAO();
-	UsuarioDAO user2Dao= daoFactory.getUsuarioDAO();
-	UsuarioDAO userOnly = daoFactory.getUsuarioDAO();
+	UsuarioDAO user1Dao= DaoFactory.getUsuarioDAO();
+	UsuarioDAO user2Dao= DaoFactory.getUsuarioDAO();
+	UsuarioDAO userOnly = DaoFactory.getUsuarioDAO();
 	long id =  2;
 	//user1Dao.persistir(user1);
 	//user2Dao.persistir(user2);
@@ -39,7 +40,7 @@ public class EventosMain {
 	List<Evento> eventos = new ArrayList<>();
 	Evento evento =(new Evento("evento de rutas",null,null,null,null,null,null,null,null,null,user3,null,null, null));
 	//(Long id, String nombre, String direccion, String codigo_postal, String provincia, String geo_x,
-	EventoDAO event = daoFactory.getEventoDAO();
+	EventoDAO event = DaoFactory.getEventoDAO();
 	event.persistir(evento);
 	long id2 = 7;
 	long id3 = 34;
@@ -57,7 +58,15 @@ public class EventosMain {
 		
 		System.out.println(usuario.toString());
 		
-	}
+	};
+	
+	Servicio servicio1 = new Servicio ("Catering","catering full",null,null,null,null,null,user3);
+	Servicio servicio2 = new Servicio ("Catering2","catering medio",null,null,null,null,null,user3);
+	
+	ServicioDAO servicio = DaoFactory.getServicioDAO();
+	servicio.persistir(servicio1);
+	servicio.persistir(servicio2);
+	
 			
 
 	}
