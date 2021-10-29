@@ -4,19 +4,24 @@ import java.util.HashSet;
 import java.util.List;
 
 import eventos.Evento;
+import eventos.EventoDetail;
 import eventos.FormaDePago;
 import eventos.Servicio;
 import eventos.TipoEvento;
 import eventos.TipoServicio;
 import eventos.Usuario;
+import eventos.Valoracion;
 import genericDao.DaoFactory;
 import genericDao.EMF;
 import genericDao.EventoDAO;
+import genericDao.EventoDetailDAO;
 import genericDao.FormaDePagoDAO;
 import genericDao.ServicioDAO;
 import genericDao.TipoEventoDAO;
 import genericDao.TipoServicioDAO;
 import genericDao.UsuarioDAO;
+import genericDao.ValoracionDAO;
+import hibernateDAO.EventoDetailDAOHibernateJPA;
 
 public class dbLoader {
 
@@ -72,16 +77,30 @@ public class dbLoader {
 		//Agrega imagen cuando el servicio ya esta creado
 		servicio.addImageToService(servicio1, "/img2.jpg");
 		
-		
-		
+			
 		// Carga evento para user3
 		List<Evento> eventos = new ArrayList<>();
-		Evento evento1 =(new Evento("evento publico","7 y 50","1900","Buenos Aires","00.50","60.40",LocalDateTime.now(),LocalDateTime.now(),"mail@mail.com","123456789",user3,formaDePago1,tipoEvento1, null));
+		Evento evento1 =(new Evento("evento publico","7 y 50","1900","Buenos Aires","00.50","60.40",LocalDateTime.now(),LocalDateTime.now(),"mail@mail.com","123456789",user3,formaDePago1,tipoEvento1,null));
 		Evento evento2 =(new Evento("evento privado","7 y 50","1900","Buenos Aires","00.50","60.40",LocalDateTime.now(),LocalDateTime.now(),"mail@mail.com","123456789",user3,formaDePago2,tipoEvento2, null));
 		EventoDAO event = DaoFactory.getEventoDAO();
 		event.persistir(evento1);
 		event.persistir(evento2);
 		
+		
+		// Agrega eventoDetail al evento1 ya creado.
+		EventoDetail detalle1 = new EventoDetail("Confirmado",evento1,servicio1,null);
+		EventoDetail detalle2 = new EventoDetail("Confirmado",evento1,servicio2,null);
+		EventoDetailDAO eventd = DaoFactory.getEventoDetailDAO();
+		eventd.persistir(detalle1);
+		eventd.persistir(detalle2);
+		//ArrayList<EventoDetail> serviciosEvento =  new ArrayList<EventoDetail>();
+		//serviciosEvento.add(detalle1);
+		//serviciosEvento.add(detalle2);
+		//evento1.setServicios_evento(serviciosEvento);
+		//event.actualizar(evento1);
+		
+		
+	
 		
 		
 	}
