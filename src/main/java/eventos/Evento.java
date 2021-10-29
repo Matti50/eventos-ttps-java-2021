@@ -11,10 +11,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = "evento")
 public class Evento {
-	
-	
+
+
 	public Evento( String nombre, String direccion, String codigo_postal, String provincia, String geo_x,
-			String geo_y, LocalDateTime fecha, Time hora, String email, String telefono, Usuario usuario,
+			String geo_y, LocalDateTime fecha, LocalDateTime hora, String email, String telefono, Usuario usuario,
 			FormaDePago formaDePago, TipoEvento tipo_evento, List<EventoDetail> servicios_evento) {
 		super();
 		this.nombre = nombre;
@@ -36,7 +36,7 @@ public class Evento {
 	@Column(name = "evento_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
-	
+
 	@Column(nullable=false)
 	private String nombre;
 	@Column(nullable=false)
@@ -52,37 +52,37 @@ public class Evento {
 	@Column(nullable=false)
 	private LocalDateTime fecha;
 	@Column(nullable=false)
-	private Time hora;
+	private LocalDateTime hora;
 	@Column(nullable=false)
 	private String email;
 	@Column(nullable=false)
 	private String telefono;
-	
-	
-	
-	
+
+
+
+
 	//navigation properties
 	@ManyToOne
 	@JoinColumn(name="usuario_id", nullable=false)
 	private Usuario usuario;
-	
+
 	@ManyToOne
 	@JoinColumn(name="forma_pago_id")
 	private FormaDePago formaDePago;
-	
+
 	@ManyToOne
 	@JoinColumn(name="tipo_evento_id")
 	private TipoEvento tipo_evento;
-	
+
 	@OneToMany(mappedBy="evento")
 	private List<EventoDetail> servicios_evento;
-	
-	
-	
 
-	
+
+
+
+
 	public Evento() {}
-	
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -91,7 +91,7 @@ public class Evento {
 		this.usuario = usuario;
 	}
 
-	
+
 	public Long getId() {
 		return Id;
 	}
@@ -148,10 +148,10 @@ public class Evento {
 	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
 	}
-	public Time getHora() {
+	public LocalDateTime getHora() {
 		return hora;
 	}
-	public void setHora(Time hora) {
+	public void setHora(LocalDateTime hora) {
 		this.hora = hora;
 	}
 	public String getEmail() {
