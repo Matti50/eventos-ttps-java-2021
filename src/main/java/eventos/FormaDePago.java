@@ -21,6 +21,7 @@ public class FormaDePago {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	
+	@Column(nullable=false)
 	private String descripcion;
 	
 	

@@ -37,16 +37,25 @@ public class Evento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	
+	@Column(nullable=false)
 	private String nombre;
+	@Column(nullable=false)
 	private String direccion;
+	@Column(nullable=false)
 	private String codigo_postal;
+	@Column(nullable=false)
 	private String provincia;
+	@Column(nullable=false)
 	private String geo_x;
+	@Column(nullable=false)
 	private String geo_y;
-
+	@Column(nullable=false)
 	private LocalDateTime fecha;
+	@Column(nullable=false)
 	private Time hora;
+	@Column(nullable=false)
 	private String email;
+	@Column(nullable=false)
 	private String telefono;
 	
 	

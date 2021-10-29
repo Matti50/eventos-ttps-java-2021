@@ -14,6 +14,7 @@ public class Servicio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	
+	@Column(nullable=false)
 	private String nombre;
 	private String descripcion;
 	private String url;
@@ -33,7 +34,7 @@ public class Servicio {
 	private List<EventoDetail> evento_details;
 	
 	@ManyToOne
-	@JoinColumn(name="tipo_servicio_id")
+	@JoinColumn(name="tipo_servicio_id", nullable=false)
 	private TipoServicio tipoServicio;
 	
 	@ElementCollection

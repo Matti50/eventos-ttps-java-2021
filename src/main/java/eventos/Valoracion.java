@@ -11,11 +11,15 @@ public class Valoracion {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	
-	
+	@Column(nullable=false)
 	private	Integer puntuacionLimpieza;
+	@Column(nullable=false)
 	private	Integer puntuacionSimpatia;
+	@Column(nullable=false)
 	private	Integer puntuacionCalidadPrecio;
+	@Column(nullable=false)
 	private	Integer puntuacionDiseño;
+	@Column(nullable=false)
 	private	Integer puntuacionSabor;
 	
 	

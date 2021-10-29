@@ -28,7 +28,8 @@ public class TipoServicio {
 	//navigation properties
 	@OneToMany(mappedBy="tipoServicio")
 	private List<Servicio> servicios;
-
+	
+	@Column(nullable=false)
 	private String descripcion;
 
 	public String getDescripcion() {

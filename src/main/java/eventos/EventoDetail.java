@@ -10,16 +10,18 @@ public class EventoDetail {
 	@Column(name = "evento_detail_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
+	
+	@Column(nullable=false)
 	private String estado;
 	
 	
 	//navigation properties
 	@ManyToOne
-	@JoinColumn(name="evento_id")
+	@JoinColumn(name="evento_id", nullable=false)
 	private Evento evento;
 	
 	@ManyToOne
-	@JoinColumn(name="servicio_id")
+	@JoinColumn(name="servicio_id", nullable=false)
 	private Servicio servicio;
 	
 	@OneToOne

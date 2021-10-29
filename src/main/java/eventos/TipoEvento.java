@@ -31,7 +31,8 @@ public class TipoEvento {
 	public void setId(Long id) {
 		Id = id;
 	}
-
+	
+	@Column(nullable=false)
 	private String descripcion;
 
 	public String getDescripcion() {
