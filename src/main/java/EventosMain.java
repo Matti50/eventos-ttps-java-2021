@@ -18,12 +18,15 @@ import eventos.TipoServicio;
 import genericDao.DaoFactory;
 import genericDao.EMF;
 import genericDao.EventoDAO;
+import genericDao.EventoDetailDAO;
 import genericDao.FormaDePagoDAO;
 import genericDao.ServicioDAO;
 import genericDao.TipoServicioDAO;
 import genericDao.UsuarioDAO;
+import genericDao.ValoracionDAO;
 import hibernateDAO.ServicioDAOHibernateJPA;
 import eventos.Usuario;
+import eventos.Valoracion;
 public class EventosMain {
 
 	public static void main(String[] args) {
@@ -59,8 +62,24 @@ public class EventosMain {
 		System.out.println(serviciosChetos);
 		System.out.println(event.getEventosForUser(4).toString());
 
-	
-	
+		// Agrega valoracion a servicio 1 al evento 1 .
+		long id1 = 1;
+		
+		Valoracion valoracion1 = new Valoracion(null, 5, 4, 3, 2, 1);
+		ValoracionDAO vd = DaoFactory.getValoracionDAO();
+		vd.persistir(valoracion1);
+		
+		EventoDetailDAO eventd = DaoFactory.getEventoDetailDAO();
+		EventoDetail detalle1 = eventd.recuperar(id1);
+		detalle1.setValoracion(valoracion1);
+		eventd.actualizar(detalle1);
+		
+		// Agrega valoracion a servicio 2 al evento 1 .
+		Valoracion valoracion2 = new Valoracion(null, 1, 1, 2, 2, 2);
+		vd.persistir(valoracion2);
+		EventoDetail detalle2 = eventd.recuperar(id);
+		detalle2.setValoracion(valoracion2);
+		eventd.actualizar(detalle2);
 	
 			
 

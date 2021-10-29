@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "evento_detail")
 public class EventoDetail {
 	
+	
 	@Id
 	@Column(name = "evento_detail_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,9 +26,10 @@ public class EventoDetail {
 	@OneToOne
 	private Valoracion valoracion;
 	
-	public EventoDetail(String estado, Servicio servicio, Valoracion valoracion) {
+	public EventoDetail(String estado, Evento evento, Servicio servicio, Valoracion valoracion) {
 		super();
 		this.estado = estado;
+		this.evento = evento;
 		this.servicio = servicio;
 		this.valoracion = valoracion;
 	}
