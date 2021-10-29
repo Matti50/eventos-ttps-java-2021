@@ -34,52 +34,54 @@ public class EventosMain {
 		dbLoader.dbInitialize();
 
 		long id =  2;
-		//user1Dao.borrar(id);
-		//user1Dao.borrar(id);
 		long id2 = 7;
 		long id3 = 3;
 		long id4 = 2;
 
 		UsuarioDAO userOnly = DaoFactory.getUsuarioDAO();
-		//System.out.println(userOnly.recuperar(id2).toString());
-		System.out.println(userOnly.existe(id2));
-		System.out.println(userOnly.existe(id3));
-
+		// Lista los usuario por columna seleccionada.
 		List<Usuario> usuariosOrdenados = userOnly.recuperarTodosOrdenados("apellido");
-
-		//userOnly.borrarTodos();
-		//List<Usuario> usuarios = userOnly.listar();
 		for(int i = 0; i<usuariosOrdenados.size(); i++) {
 			Usuario usuario = usuariosOrdenados.get(i);
-
 			System.out.println(usuario.toString());
 
 		};
 
+		// Busca servicios de un usuario particular.
 		ServicioDAO serviceDao = DaoFactory.getServicioDAO();
 		EventoDAO event = DaoFactory.getEventoDAO();
-		List<Servicio> serviciosChetos = serviceDao.getServiciosForUser(id3);
-		System.out.println(serviciosChetos);
+		List<Servicio> serviciosDeUsuario = serviceDao.getServiciosForUser(id3);
+		System.out.println(serviciosDeUsuario);
 		System.out.println(event.getEventosForUser(4).toString());
 
-		// Agrega valoracion a servicio 1 al evento 1 .
-		long id1 = 1;
 
+		// UPDATE
+		// Agrega valoracion a  servicio 1 y servicio 2 al evento 1 con update
+		long id1 = 1;
 		Valoracion valoracion1 = new Valoracion(null, 5, 4, 3, 2, 1);
 		ValoracionDAO vd = DaoFactory.getValoracionDAO();
 		vd.persistir(valoracion1);
-
 		EventoDetailDAO eventd = DaoFactory.getEventoDetailDAO();
 		EventoDetail detalle1 = eventd.recuperar(id1);
 		detalle1.setValoracion(valoracion1);
 		eventd.actualizar(detalle1);
 
-		// Agrega valoracion a servicio 2 al evento 1 .
 		Valoracion valoracion2 = new Valoracion(null, 1, 1, 2, 2, 2);
 		vd.persistir(valoracion2);
 		EventoDetail detalle2 = eventd.recuperar(id);
 		detalle2.setValoracion(valoracion2);
 		eventd.actualizar(detalle2);
+
+
+		// DELETE
+		// Elimina un usuario
+		System.out.println("El usuario 1 existe: "+ userOnly.existe(id1));
+
+
+		Usuario usuarioDelete = userOnly.recuperar(id1);
+		userOnly.borrar(usuarioDelete);
+		System.out.println("El usuario 3 fue eliminado.");
+		System.out.println("El usuario 1 existe: "+ userOnly.existe(id1));
 
 
 

@@ -49,5 +49,7 @@ public class DaoFactory {
 		
 		return new EventoDetailDAOHibernateJPA();
 	}
+
+	
 	
 }
