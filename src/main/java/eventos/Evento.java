@@ -14,7 +14,7 @@ public class Evento {
 	
 	
 	public Evento( String nombre, String direccion, String codigo_postal, String provincia, String geo_x,
-			String geo_y, LocalDateTime fecha, Time hora, String email, String telefono, Usuario usuario,
+			String geo_y, LocalDateTime fecha, LocalDateTime hora, String email, String telefono, Usuario usuario,
 			FormaDePago formaDePago, TipoEvento tipo_evento, List<EventoDetail> servicios_evento) {
 		super();
 		this.nombre = nombre;
@@ -45,7 +45,9 @@ public class Evento {
 	private String geo_y;
 
 	private LocalDateTime fecha;
-	private Time hora;
+	@Column(nullable=false)
+	private LocalDateTime hora;
+	@Column(nullable=false)
 	private String email;
 	private String telefono;
 	
@@ -139,10 +141,10 @@ public class Evento {
 	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
 	}
-	public Time getHora() {
+	public LocalDateTime getHora() {
 		return hora;
 	}
-	public void setHora(Time hora) {
+	public void setHora(LocalDateTime hora) {
 		this.hora = hora;
 	}
 	public String getEmail() {

@@ -1,10 +1,13 @@
 package genericDao;
 
 import hibernateDAO.EventoDAOHibernateJPA;
+import hibernateDAO.EventoDetailDAOHibernateJPA;
 import hibernateDAO.FormaDePagoDAOHibernateJPA;
 import hibernateDAO.ServicioDAOHibernateJPA;
+import hibernateDAO.TipoEventoDAOHibernateJPA;
 import hibernateDAO.TipoServicioDAOHibernateJPA;
 import hibernateDAO.UsuarioDAOHibernateJPA;
+import hibernateDAO.ValoracionDAOHibernateJPA;
 
 public class DaoFactory {
 
@@ -31,4 +34,20 @@ public class DaoFactory {
 		// TODO Auto-generated method stub
 		return new FormaDePagoDAOHibernateJPA();
 	}
+
+	public static TipoEventoDAO getTipoEventoDAO() {
+		
+		return new TipoEventoDAOHibernateJPA();
+	}
+	
+	public static ValoracionDAO getValoracionDAO() {
+		
+		return new ValoracionDAOHibernateJPA();
+	}
+	
+	public static EventoDetailDAO getEventoDetailDAO() {
+		
+		return new EventoDetailDAOHibernateJPA();
+	}
+	
 }
