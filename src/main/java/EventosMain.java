@@ -62,10 +62,10 @@ public class EventosMain {
 	
 	
 	
-	Usuario user3 = new Usuario("Matias2", "Aguirre", "masmam@gmail.com", "123455", null, null);
+	Usuario user3 = new Usuario("Matias333", "Aguirre", "masmam@gmail.com", "123455", new ArrayList<Evento>(), null);
 	userOnly.persistir(user3);
 	List<Evento> eventos = new ArrayList<>();
-	Evento evento =(new Evento("evento de rutas","7 y 50","1900","Buenos Aires","00.50","60.40",LocalDateTime.now(),null,null,null,user3,formaDePago1,null, null));
+	Evento evento =(new Evento("evento tarrito","7 y 50","1900","Buenos Aires","00.50","60.40",LocalDateTime.now(),null,null,null,user3,formaDePago1,null, null));
 	//(Long id, String nombre, String direccion, String codigo_postal, String provincia, String geo_x,
 	EventoDAO event = DaoFactory.getEventoDAO();
 	event.persistir(evento);
@@ -90,7 +90,7 @@ public class EventosMain {
 	
 	
 	
-	
+	//userOnly.agregarEvento(user3, evento);
 	
 	
 	
@@ -98,6 +98,9 @@ public class EventosMain {
 	
 	Servicio servicio1 = new Servicio ("Catering","catering full",null,null,null,null,tipoServicio1,user3);
 	Servicio servicio2 = new Servicio ("Esto es un servicio de foodTruck","catering medio",null,null,null,null,tipoServicio2,user3);
+	
+	
+	
 	
 	//agregamos las imagenes seteando el array.
 	HashSet<String> imagenes = new HashSet<String>();
@@ -115,7 +118,7 @@ public class EventosMain {
 	
 	servicio.addImageToService(servicio1, "/img2.jpg");
 	
-			
+	servicio.borrar(servicio1);
 
 	}
 }

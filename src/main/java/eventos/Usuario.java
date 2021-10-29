@@ -105,4 +105,29 @@ public class Usuario {
 		return evento;
 	}
 	
+	public Evento removerEvento(Evento evento) {
+		if(!this.eventos.remove(evento)) {
+			//tirar excepcion
+			return null;
+		};
+		
+		return evento;
+	}
+	
+	
+	public Servicio agregarServicio(Servicio servicio) {
+		this.servicios.add(servicio);
+		return servicio;
+	}
+	
+	public Servicio removerServicio(Servicio servicio) {
+		if(!this.servicios.remove(servicio)) {
+			//throw
+			return null;
+		}
+		return servicio;
+		
+	}
+	
+	
 }
